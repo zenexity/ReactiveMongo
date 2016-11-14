@@ -4,7 +4,8 @@ import reactivemongo.api.{
   CrAuthentication,
   FailoverStrategy,
   MongoDriver,
-  MongoConnectionOptions
+  MongoConnectionOptions,
+  ReadPreference
 }
 
 object Common {
@@ -37,7 +38,8 @@ object Common {
   val DefaultOptions = {
     val a = MongoConnectionOptions(
       failoverStrategy = failoverStrategy,
-      nbChannelsPerNode = 20
+      nbChannelsPerNode = 20,
+      readPreference = ReadPreference.secondary
     )
 
     val b = {
